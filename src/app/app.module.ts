@@ -11,11 +11,13 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { CheckboxModule } from 'primeng/checkbox';
+import { CheckboxModule } from 'primeng/checkbox'
+import timeGridPlugin from '@fullcalendar/timegrid';;
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin
+  interactionPlugin,
+  timeGridPlugin,
 ]);
 
 @NgModule({
