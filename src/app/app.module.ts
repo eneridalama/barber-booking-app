@@ -5,18 +5,34 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { TimelineComponent } from './timeline/timeline.component';
-import { AppointmentInfoComponent } from './timeline/appointment-info/appointment-info.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
     AppComponent,
     BookAppointmentComponent,
     TimelineComponent,
-    AppointmentInfoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FullCalendarModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    ButtonModule,
+    DialogModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
