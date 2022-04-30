@@ -7,9 +7,10 @@ import { barberService } from '../shared/barberService.model';
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
-  styleUrls: ['./book-appointment.component.scss']
+  styleUrls: ['./book-appointment.component.scss'],
 })
 export class BookAppointmentComponent implements OnInit {
+
 
   
   constructor(private primengConfig: PrimeNGConfig) {}
@@ -69,6 +70,6 @@ export class BookAppointmentComponent implements OnInit {
   display: boolean = false;
   showDialog() {
     this.display = true;
-  }
 
+  }
 }

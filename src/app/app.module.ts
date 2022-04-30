@@ -11,6 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+
 import { CheckboxModule } from 'primeng/checkbox';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { CommonModule } from '@angular/common';
@@ -40,7 +41,6 @@ FullCalendarModule.registerPlugins([
     CalendarModule,
     BrowserAnimationsModule,
     InputTextModule
-
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import { BARBER_SERVICES } from './shared/BARBER_SERVICES';
 })
 export class AppComponent {
 
+
   title = 'Barber Booking App';
   
   services: barberService[]  = BARBER_SERVICES; 
