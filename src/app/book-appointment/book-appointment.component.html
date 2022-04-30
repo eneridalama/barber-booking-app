@@ -1,1 +1,59 @@
-Works
+
+
+<button pButton type="button" (click)="showDialog()" label="Book Now"></button>
+
+<p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'">
+    <form [formGroup]="addNewAppointmentForm" > 
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <span class="p-float-label">
+            <input type="text" pInputText  id="inputname" formControlName="firstname">
+            <label for="inputname">First Name</label>
+        </span>
+    </div>
+
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <span class="p-float-label">
+            <input type="text" pInputText id="inputlastname" formControlName="lastname">
+            <label for="inputlastname">Last Name</label>
+        </span>
+    </div>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+        <span class="p-float-label">
+            <input type="number" pInputText id="inputnumber" formControlName="number">
+            <label for="inputnumber">Number</label>
+        </span>
+    </div>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+        <span class="p-float-label">
+            <p-calendar formControlName="date"></p-calendar>
+            <label for="inputnumber">Pick Date</label>
+        </span>
+    </div>
+    <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+        <span class="p-float-label">   
+            <p-calendar [timeOnly]="true" inputId="timeonly" formControlName="hour"></p-calendar>
+            <label for="timeonly">Pick Hour</label>
+        </span>
+    </div>
+        <span>Services: </span>
+    
+    <div *ngFor="let service of services" class="p-field-checkbox ">
+        <p-checkbox name="group2" value={{service}}  [inputId]="service.title" formControlName="servicesList"></p-checkbox>
+        <label [for]="service.title" id="label-checkbox">{{service.title}}</label>
+    </div>
+    <p-button label="Calculate time"></p-button>
+  
+</form>
+    <ng-template pTemplate="footer">
+        <!-- <p-button icon="pi pi-times" (click)="display=false" label="Cancel"></p-button> -->
+        <p-button icon="pi pi-check" (click)='addNewAppointment($event)' (click)="display=false" label="Confirm" class="p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>
+
+
