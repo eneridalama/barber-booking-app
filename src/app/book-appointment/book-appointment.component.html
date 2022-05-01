@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-Works
-=======
 <button pButton type="button" (click)="showDialog()" label="Book Now"></button>
 
 <p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'">
@@ -20,6 +17,7 @@ Works
                 <label for="inputlastname">Last Name</label>
             </span>
         </div>
+      
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
             <span class="p-float-label">
@@ -27,6 +25,7 @@ Works
                 <label for="inputnumber">Number</label>
             </span>
         </div>
+      
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
             <span class="p-float-label">
@@ -34,6 +33,7 @@ Works
                 <label for="inputnumber">Pick Date</label>
             </span>
         </div>
+      
         <div class="p-inputgroup">
             <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
             <span class="p-float-label">
@@ -41,6 +41,7 @@ Works
                 <label for="timeonly">Pick Hour</label>
             </span>
         </div>
+      
         <span>Services: </span>
 
         <ng-container *ngFor="let service of services">
@@ -50,9 +51,9 @@ Works
                 <label [for]="service.title" id="label-checkbox">{{service.title}}</label>
             </div>
         </ng-container>
+      
         <p-button label="Calculate time" (click)="calculateTime()"></p-button>
-        <!-- <ng-content *ngIf="calculateTime()"></ng-content> -->
-
+  
     </form>
     <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)='addNewAppointment($event)' (click)="display=false" label="Confirm"
@@ -60,4 +61,4 @@ Works
     </ng-template>
 
 </p-dialog>
->>>>>>> Stashed changes
+

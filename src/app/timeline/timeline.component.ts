@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { Calendar } from '@fullcalendar/core';
-import timeGridPlugin from '@fullcalendar/timegrid';
+import { Subscription } from 'rxjs';
+import { CommonService } from '../service/common-service.service';
 
 @Component({
   selector: 'app-timeline',
@@ -9,7 +9,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  
+  subscription: Subscription = new Subscription();
 
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridDay',
@@ -32,7 +32,7 @@ export class TimelineComponent implements OnInit {
     },
   };
   
-  constructor() { }
+  constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
 
@@ -45,6 +45,9 @@ export class TimelineComponent implements OnInit {
         },
       ];
       console.log(this.calendarOptions.events);
+        },
+      ];
+      this.calendarOptions.events = [...this.calendarOptions.events];
     });
   }
 
@@ -52,7 +55,6 @@ export class TimelineComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
->>>>>>> Stashed changes
   }
 
 }

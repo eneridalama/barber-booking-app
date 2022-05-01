@@ -1,1 +1,18 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+a {
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+body .fc-title { 
+    font-size: 1em;  
+ }
+
+ body .ui-orderlist-controls {
+    display: none;
+  }

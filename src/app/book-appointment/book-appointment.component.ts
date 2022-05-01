@@ -1,29 +1,22 @@
-<<<<<<< Updated upstream
-import { Component, OnInit } from '@angular/core';
-
-=======
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { barberService } from '../shared/barberService.model';
 import { CommonService } from '../service/common-service.service';
 import moment from 'moment';
->>>>>>> Stashed changes
+
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
   styleUrls: ['./book-appointment.component.scss'],
 })
 export class BookAppointmentComponent implements OnInit {
-<<<<<<< Updated upstream
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-=======
+
   constructor(private commonService: CommonService) {}
 
   addNewAppointmentForm: FormGroup = new FormGroup({});
-
-  ngOnInit(): void {
+  
+  ngOnInit(): void {    
     this.addNewAppointmentForm = new FormGroup({
       firstname: new FormControl(null),
       lastname: new FormControl(null),
@@ -41,8 +34,8 @@ export class BookAppointmentComponent implements OnInit {
   @Input() date: Date = new Date();
   @Input() hour: Date = new Date();
   @Input() selectedService = [];
+  
   timeValue: string = '';
-
   onSelect($event: Date) {
     let hour = new Date($event).getHours();
     let min = new Date($event).getMinutes();
@@ -84,6 +77,6 @@ export class BookAppointmentComponent implements OnInit {
   display: boolean = false;
   showDialog() {
     this.display = true;
->>>>>>> Stashed changes
+
   }
 }
