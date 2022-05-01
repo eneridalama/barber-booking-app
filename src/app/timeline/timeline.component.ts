@@ -44,12 +44,9 @@ export class TimelineComponent implements OnInit {
           end: val.date + 'T' + val.duration, 
         },
       ];
-      console.log(this.calendarOptions.events);
-        },
-      ];
-      this.calendarOptions.events = [...this.calendarOptions.events];
     });
   }
+  
 
   ngOnDestroy() {
     if (this.subscription) {
