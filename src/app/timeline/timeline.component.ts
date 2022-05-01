@@ -15,12 +15,11 @@ export class TimelineComponent implements OnInit {
     initialView: 'timeGridDay',
     customButtons: {},
     progressiveEventRendering: true,
-    height: 700,
-    contentHeight: 600,
+    height: 800,
     handleWindowResize: true,
     nowIndicator: true,
     slotMinTime: '09:00:00',
-    slotMaxTime: '20:00:00',
+    slotMaxTime: '21:00:00',
     titleFormat: {
       year: 'numeric',
       month: 'short',
@@ -36,11 +35,16 @@ export class TimelineComponent implements OnInit {
   constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
+
     this.subscription = this.commonService.data.subscribe((val) => {
       this.calendarOptions.events = [
         {
           title: val.firstname + ' ' + val.lastname + ' - ' + val.number,
           start: val.date + 'T' + val.hour,
+          end: val.date + 'T' + val.duration, 
+        },
+      ];
+      console.log(this.calendarOptions.events);
         },
       ];
       this.calendarOptions.events = [...this.calendarOptions.events];
