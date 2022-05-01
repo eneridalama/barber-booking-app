@@ -1,5 +1,3 @@
-
-
 <button pButton type="button" (click)="showDialog()" label="Book Now"></button>
 
 <p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'">
@@ -50,7 +48,6 @@
   
 </form>
     <ng-template pTemplate="footer">
-        <!-- <p-button icon="pi pi-times" (click)="display=false" label="Cancel"></p-button> -->
         <p-button icon="pi pi-check" (click)='addNewAppointment($event)' (click)="display=false" label="Confirm" class="p-button-text"></p-button>
     </ng-template>
 

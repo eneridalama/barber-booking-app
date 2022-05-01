@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { Calendar } from '@fullcalendar/core';
-import timeGridPlugin from '@fullcalendar/timegrid';
+import { Subscription } from 'rxjs';
+import { CommonService } from '../service/common-service.service';
 
 @Component({
   selector: 'app-timeline',
@@ -9,7 +9,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  
+  subscription: Subscription = new Subscription();
 
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridDay',
@@ -33,9 +33,24 @@ export class TimelineComponent implements OnInit {
     },
   };
   
-  constructor() { }
+  constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
+    this.subscription = this.commonService.data.subscribe((val) => {
+      this.calendarOptions.events = [
+        {
+          title: val.firstname + ' ' + val.lastname + ' - ' + val.number,
+          start: val.date + 'T' + val.hour,
+        },
+      ];
+      this.calendarOptions.events = [...this.calendarOptions.events];
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
