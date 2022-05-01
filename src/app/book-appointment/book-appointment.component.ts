@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { barberService } from '../shared/barberService.model';
-//TO DO importo moment
+import { CommonService } from '../service/common-service.service';
+import moment from 'moment';
 //TO DO Krijo nje service për të kaluar të dhënat te komponenti timeline
 @Component({
   selector: 'app-book-appointment',
@@ -11,15 +12,11 @@ import { barberService } from '../shared/barberService.model';
 })
 export class BookAppointmentComponent implements OnInit {
 
-
-  
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private commonService: CommonService) {}
 
   addNewAppointmentForm: FormGroup = new FormGroup({});
   
-  ngOnInit(): void {
-    this.primengConfig.ripple = true;
-    
+  ngOnInit(): void {    
     this.addNewAppointmentForm = new FormGroup({
       firstname: new FormControl(null),
       lastname: new FormControl(null),
@@ -36,7 +33,7 @@ export class BookAppointmentComponent implements OnInit {
   @Input() number: number = 0;
   @Input() date: Date = new Date();
   @Input() hour: Date = new Date();
-  // @Input() selectedService = [];
+  @Input() selectedService = [];
   timeValue: string = '';
 
   onSelect($event: Date) {
@@ -61,10 +58,11 @@ export class BookAppointmentComponent implements OnInit {
       firstname: this.addNewAppointmentForm.value.firstname,
       lastname: this.addNewAppointmentForm.value.lastname,
       number: this.addNewAppointmentForm.value.number,
-      // date: moment(this.addNewAppointmentForm.value.date).format('YYYY-MM-DD'),
-      // hour: moment(this.addNewAppointmentForm.value.hour).format('HH:mm:ss'),
-      // selectedService: this.addNewAppointmentForm.value.selectedService,
+      date: moment(this.addNewAppointmentForm.value.date).format('YYYY-MM-DD'),
+      hour: moment(this.addNewAppointmentForm.value.hour).format('HH:mm:ss'),
+      selectedService: this.addNewAppointmentForm.value.selectedService,
     };
+    this.commonService.data.next(object);
   }
 
   display: boolean = false;
