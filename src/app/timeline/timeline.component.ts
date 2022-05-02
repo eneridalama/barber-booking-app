@@ -43,9 +43,11 @@ export class TimelineComponent implements OnInit {
           start: val.date + 'T' + val.hour,
           end: val.date + 'T' + val.duration, 
         },
-      ]; 
+
+      ];
     });
   }
+  
 
   ngOnDestroy() {
     if (this.subscription) {
