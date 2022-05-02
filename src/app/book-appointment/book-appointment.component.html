@@ -51,9 +51,6 @@
                 <label [for]="service.title" id="label-checkbox">{{service.title}}</label>
             </div>
         </ng-container>
-      
-        <p-button label="Calculate time" (click)="calculateTime()"></p-button>
-  
     </form>
     <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)='addNewAppointment($event)' (click)="display=false" label="Confirm"

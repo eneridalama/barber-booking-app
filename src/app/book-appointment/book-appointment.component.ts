@@ -33,7 +33,6 @@ export class BookAppointmentComponent implements OnInit {
   @Input() number: number = 0;
   @Input() date: Date = new Date();
   @Input() hour: Date = new Date();
-  @Input() selectedService = [];
   
   timeValue: string = '';
   onSelect($event: Date) {
@@ -50,7 +49,7 @@ export class BookAppointmentComponent implements OnInit {
   checkValue(event: any, service: barberService){
     if (event.checked.length == 1) {
       this.checkedValues.push(service.time);
-    } else  {
+    } else {
       const index = this.checkedValues.indexOf(service.time);
         this.checkedValues.splice(index, 1);
     }
@@ -72,11 +71,11 @@ export class BookAppointmentComponent implements OnInit {
       duration: moment(moment(this.addNewAppointmentForm.value.hour).add(this.calculateTime() as moment.DurationInputArg1, units)).format('HH:mm:ss'),
     };
     this.commonService.data.next(object);
+    this.addNewAppointmentForm.reset();
   }
 
   display: boolean = false;
   showDialog() {
     this.display = true;
-
   }
 }
