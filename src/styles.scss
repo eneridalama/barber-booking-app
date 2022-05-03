@@ -1,17 +1,24 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import "../node_modules/primeng/resources/themes/lara-dark-blue/theme.css";
+
 a {
     text-decoration: none;
 }
 
 body{
     font-family: 'Ubuntu', sans-serif;
-    
+    background-color: rgb(9, 25, 48);
 }
 
 body .fc-title { 
     font-size: 1em;  
  }
+
+ .fc-day-today {
+    background: rgb(15, 44, 84) !important;
+    border: none !important;
+} 
 
  body .ui-orderlist-controls {
     display: none;

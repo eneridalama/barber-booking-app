@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import { Service } from './service';
 import {Message} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import {SelectItem} from 'primeng/api';
+import { barberService } from '../shared/barberService.model';
 
 @Component({
   selector: 'app-barber-services',
@@ -12,11 +12,11 @@ import {SelectItem} from 'primeng/api';
   providers: [ConfirmationService, MessageService]
 })
 export class BarberServicesComponent implements OnInit {
-  @Input() services: Service[] = [];
+  @Input() services: barberService[] = [];
 
   display: boolean = false;
   openModal: boolean = false;
-  selectedService: Service = { image: '', title: '', time: 0, price: 0 };
+  selectedService: barberService = { image: '', title: '', time: 0, price: 0 };
   image: string = '';
   openEdit: boolean = false;
 
@@ -54,13 +54,13 @@ export class BarberServicesComponent implements OnInit {
     }
   }
 
-  deleteService(listItem: Service) {
+  deleteService(listItem: barberService) {
     console.log(listItem)
     const index = this.services.indexOf(listItem);
     this.services.splice(index, 1);
   }
 
-  confirm(listItem: Service) {
+  confirm(listItem: barberService) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',

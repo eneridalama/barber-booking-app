@@ -15,7 +15,7 @@ export class TimelineComponent implements OnInit {
     initialView: 'timeGridDay',
     customButtons: {},
     progressiveEventRendering: true,
-    height: 1000,
+    height: 600,
     expandRows: true,
     handleWindowResize: true,
     nowIndicator: true,
@@ -45,8 +45,7 @@ export class TimelineComponent implements OnInit {
     this.subscription = this.commonService.data.subscribe((val) => {  
       this.calendarOptions.events = [
         ...this.calendarOptions.events as any,{
-          title: val.firstname + ' ' + val.lastname,
-          description: val.price + ' - ' + val.number,
+          title: val.firstname + ' ' + val.lastname+ ' - ' + val.number,
           start: val.date + 'T' + val.hour,
           end: val.date + 'T' + val.duration, 
         },

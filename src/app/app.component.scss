@@ -1,0 +1,38 @@
+.container{
+    .row{
+        .buttons{
+            margin: 0;
+            padding: 0 0 20px 0;
+            // background-color: rgb(32, 41, 95);
+
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .container{
+        // background-color: red;
+    
+    .row{
+        .first{
+            // align-items: center;
+            height: auto;
+            margin: auto;
+            // max-height: 300px;
+        }
+        .col{
+            padding: 50px 0 0 0;
+            .pad-item{
+                padding: 40px 0;
+            }
+            app-header{
+                text-align: center;
+            }
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+                width: 300px;
+            }
+       }   }
+    }
+}
