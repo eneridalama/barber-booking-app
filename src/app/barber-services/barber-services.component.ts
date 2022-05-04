@@ -22,14 +22,6 @@ export class BarberServicesComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  sortOptions: SelectItem[] = [];
-
-  sortOrder: number = 0;
-
-  sortField: string = '';
-
-
-
   constructor(private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) {}
 
   ngOnInit() {
@@ -75,8 +67,6 @@ export class BarberServicesComponent implements OnInit {
   });
 }
 
-
-
   editService(event: any) {
     this.selectedService = event;
     this.openModal = true;
@@ -97,3 +87,5 @@ export class BarberServicesComponent implements OnInit {
   }
 
 }
+
+
