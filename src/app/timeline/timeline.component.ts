@@ -21,8 +21,8 @@ export class TimelineComponent implements OnInit {
     nowIndicator: true,
     eventColor: 'rgb(141,208,255)',
     eventTextColor: 'rgb(42,50,61)',
-    slotMinTime: '09:00:00',
-    slotMaxTime: '21:00:00',
+    // slotMinTime: '09:00:00',
+    // slotMaxTime: '21:00:00',
     titleFormat: {
       year: 'numeric',
       month: 'short',
@@ -33,8 +33,14 @@ export class TimelineComponent implements OnInit {
       center: 'title',
       end: 'prev,next',
     },
+    eventOverlap: false,
+    editable: true,
+    eventStartEditable: true,
+    eventResizableFromStart: true,
+    eventDurationEditable: true,
+   
     events: [
-
+      
     ]
   };
   
