@@ -58,11 +58,14 @@ export class BarberServicesComponent implements OnInit {
       header: 'Delete Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.deleteService(listItem); 
-        this.msgs = [{severity:'info', summary:'Confirmed', detail:'Record deleted'}];
+        this.deleteService(listItem);         
+          this.msgs = [{severity:'success',  detail:'Record deleted'}];
       },
-      reject: () => {
-          this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
+     
+      reject: () => { setTimeout(() => {
+        this.msgs = [{severity:'error',  detail:'You have rejected'}];
+      }, 2);
+          
       }
   });
 }
