@@ -39,7 +39,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     BookAppointmentComponent,
     TimelineComponent,
     BarberServicesComponent,
-    AddServiceComponent
+    AddServiceComponent,
   ],
   imports: [
     BrowserModule,
