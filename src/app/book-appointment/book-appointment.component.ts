@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 import { barberService } from '../shared/barberService.model';
 import { CommonService } from '../service/common-service.service';
@@ -11,29 +16,44 @@ import moment from 'moment';
   styleUrls: ['./book-appointment.component.scss'],
 })
 export class BookAppointmentComponent implements OnInit {
-
-  constructor(private commonService: CommonService) {}
+  constructor(
+    private commonService: CommonService,
+    private formBuilder: FormBuilder
+  ) {}
 
   addNewAppointmentForm: FormGroup = new FormGroup({});
-  
-  ngOnInit(): void {    
-    this.addNewAppointmentForm = new FormGroup({
-      firstname: new FormControl(null),
-      lastname: new FormControl(null),
-      number: new FormControl(null),
-      date: new FormControl(null),
-      hour: new FormControl(null),
-      servicesList: new FormControl(null),
+
+  set object(item: any) {
+    setTimeout(() => {
+      if (item !== undefined) {
+        this.addNewAppointmentForm = this.initializeForm(item);
+      }
     });
   }
 
+  ngOnInit(): void {
+    this.addNewAppointmentForm = this.initializeForm(null);
+  }
+
+  initializeForm(value: any): FormGroup {
+    return this.formBuilder.group({
+      firstname: new FormControl(null, Validators.required),
+      lastname: new FormControl(null, Validators.required),
+      number: new FormControl(null, Validators.required),
+      date: new FormControl(null, Validators.required),
+      hour: new FormControl(null, Validators.required),
+      servicesList: new FormControl(null, Validators.required),
+    });
+  }
+
+ 
   @Input() services: barberService[] = [];
   @Input() firstname: string = '';
   @Input() lastname: string = '';
   @Input() number: number = 0;
   @Input() date: Date = new Date();
   @Input() hour: Date = new Date();
-  
+
   timeValue: string = '';
   onSelect($event: Date) {
     let hour = new Date($event).getHours();
@@ -46,17 +66,19 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   checkedValues: Array<Number> = [];
-  checkValue(event: any, service: barberService){
+  checkValue(event: any, service: barberService) {
     if (event.checked.length == 1) {
       this.checkedValues.push(service.time);
     } else {
       const index = this.checkedValues.indexOf(service.time);
-        this.checkedValues.splice(index, 1);
+      this.checkedValues.splice(index, 1);
     }
   }
-  
-  calculateTime(){
-     return this.checkedValues.reduce((accumulator: any, curr: any) => accumulator + curr);
+
+  calculateTime() {
+    return this.checkedValues.reduce(
+      (accumulator: any, curr: any) => accumulator + curr
+    );
   }
 
   addNewAppointment(event: any) {
@@ -68,7 +90,12 @@ export class BookAppointmentComponent implements OnInit {
       number: this.addNewAppointmentForm.value.number,
       date: moment(this.addNewAppointmentForm.value.date).format('YYYY-MM-DD'),
       hour: moment(this.addNewAppointmentForm.value.hour).format('HH:mm:ss'),
-      duration: moment(moment(this.addNewAppointmentForm.value.hour).add(this.calculateTime() as moment.DurationInputArg1, units)).format('HH:mm:ss'),
+      duration: moment(
+        moment(this.addNewAppointmentForm.value.hour).add(
+          this.calculateTime() as moment.DurationInputArg1,
+          units
+        )
+      ).format('HH:mm:ss'),
     };
     this.commonService.data.next(object);
     this.addNewAppointmentForm.reset();
@@ -77,5 +104,6 @@ export class BookAppointmentComponent implements OnInit {
   display: boolean = false;
   showDialog() {
     this.display = true;
+    this.addNewAppointmentForm.reset();
   }
 }

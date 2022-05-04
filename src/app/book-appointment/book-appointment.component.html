@@ -1,4 +1,4 @@
-<button pButton type="button" (click)="showDialog()" label="Book Now"></button>
+<button pButton type="button" class="p-button-sm" (click)="showDialog()" label="Book Now"></button>
 
 <p-dialog [modal]="true" header="Book Appointment" [(visible)]="display" [transitionOptions]="'100ms'">
     <form [formGroup]="addNewAppointmentForm">
@@ -51,11 +51,11 @@
                 <label [for]="service.title" id="label-checkbox">{{service.title}}</label>
             </div>
         </ng-container>
+    
     </form>
-    <ng-template pTemplate="footer">
+    <ng-template pTemplate="footer" >
         <p-button icon="pi pi-check" (click)='addNewAppointment($event)' (click)="display=false" label="Confirm"
-            class="p-button-text" ></p-button>
+            class="p-button-text" [disabled]="addNewAppointmentForm.invalid" ></p-button>
     </ng-template>
-
 </p-dialog>
 
