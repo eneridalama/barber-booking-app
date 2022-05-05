@@ -102,7 +102,7 @@ export class BookAppointmentComponent implements OnInit {
           ).format('HH:mm:ss'),
         };
         this.commonService.data.next(object);
-        this.localStorageService.setItem(object.firstname,  JSON.stringify(object))
+        // this.localStorageService.setItem(object.firstname,  JSON.stringify(object))
         this.addNewAppointmentForm.reset();
         this.showDialog(false);
   }
