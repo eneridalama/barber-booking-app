@@ -61,11 +61,8 @@ export class BarberServicesComponent implements OnInit {
         this.deleteService(listItem);         
           this.msgs = [{severity:'success',  detail:'Record deleted'}];
       },
-     
-      reject: () => { setTimeout(() => {
+      reject: () => { 
         this.msgs = [{severity:'error',  detail:'You have rejected'}];
-      }, 2);
-          
       }
   });
 }
