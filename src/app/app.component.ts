@@ -9,6 +9,7 @@ import { BARBER_SERVICES } from './shared/BARBER_SERVICES';
 })
 export class AppComponent {
 
+  
 
   title = 'Barber Booking App';
   
@@ -21,4 +22,5 @@ export class AppComponent {
   hour: Date = new Date();
   selectedService = [];
 
+ 
 }

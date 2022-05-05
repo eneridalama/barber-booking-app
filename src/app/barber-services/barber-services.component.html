@@ -1,7 +1,7 @@
 <button pButton type="button" class="p-button-sm" (click)="showDialog()" label="Services"></button>
 
 <p-dialog [modal]="true" header="Services"  [(visible)]="display" [transitionOptions]="'100ms'">
-    <p-messages [value]="msgs" [enableService]="false" style="width: 20px"></p-messages>
+    <p-messages [value]="msgs" [enableService]="false"></p-messages>
     <ul class="list-group" *ngFor="let service of services;let i = index">
         <li class="list-group-item">
             <p-card header={{service.title}} subheader='{{service.time }}' [style]="{width: '230px'}"
