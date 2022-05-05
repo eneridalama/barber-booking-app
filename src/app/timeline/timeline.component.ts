@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { Subscription } from 'rxjs';
 import { CommonService } from '../service/common-service.service';
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Component({
   selector: 'app-timeline',
@@ -44,21 +45,23 @@ export class TimelineComponent implements OnInit {
     ]
   };
   
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
 
     this.subscription = this.commonService.data.subscribe((val) => {  
       this.calendarOptions.events = [
         ...this.calendarOptions.events as any,{
+          id: val.firstname,
           title: val.firstname + ' ' + val.lastname+ ' - ' + val.number,
           start: val.date + 'T' + val.hour,
           end: val.date + 'T' + val.duration, 
         },
         
       ];
+      this.localStorageService.getItem(JSON.stringify(this.calendarOptions.events))
     });
-    
+    console.log(this.calendarOptions.events)
   }
   
 
