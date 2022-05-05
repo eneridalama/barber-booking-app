@@ -40,9 +40,7 @@ export class TimelineComponent implements OnInit {
     eventResizableFromStart: true,
     eventDurationEditable: true,
    
-    events: [
-      
-    ]
+    events: []
   };
   
   constructor(private commonService: CommonService, private localStorageService: LocalStorageService) {}

@@ -21,13 +21,11 @@ export class BookAppointmentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private localStorageService: LocalStorageService
   ) {}
-  
-  public queryKey: string = '';
-  public removeKey: string = '';
-  public queryResult: string = '';
 
   addNewAppointmentForm: FormGroup = new FormGroup({});
 
+
+// rirendirizon faqen per te shfaqur editimete e reja
   set object(item: any) {
     setTimeout(() => {
       if (item !== undefined) {
@@ -49,7 +47,6 @@ export class BookAppointmentComponent implements OnInit {
       date: new FormControl(null, Validators.required),
       hour: new FormControl(null, Validators.required),
       servicesList: new FormControl(null, Validators.required),
-      
     });
   }
  
@@ -70,6 +67,7 @@ export class BookAppointmentComponent implements OnInit {
       this.timeValue = `${hour}:${min}`;
     }
   }
+
 
   checkedValues: Array<Number> = [];
   checkValue(event: any, service: barberService) {
