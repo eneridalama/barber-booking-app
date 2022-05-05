@@ -2,7 +2,7 @@
 
 <p-dialog [modal]="true" header="Services"  [(visible)]="display" [transitionOptions]="'100ms'">
     <p-messages [value]="msgs" [enableService]="false"></p-messages>
-    <ul class="list-group" *ngFor="let service of services;let i = index">
+    <ul class="list-group" *ngFor="let service of services">
         <li class="list-group-item">
             <p-card header={{service.title}} subheader='{{service.time }}' [style]="{width: '230px'}"
                 styleClass="p-card-shadow">
