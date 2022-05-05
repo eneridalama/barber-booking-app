@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -106,11 +106,13 @@ export class BookAppointmentComponent implements OnInit {
         this.commonService.data.next(object);
         this.localStorageService.setItem(object.firstname,  JSON.stringify(object))
         this.addNewAppointmentForm.reset();
+        this.showDialog(false);
   }
 
+  
   display: boolean = false;
-  showDialog() {
-    this.display = true;
+  showDialog(value: boolean) {
+    this.display = value;
     this.addNewAppointmentForm.reset();
   }
 }
