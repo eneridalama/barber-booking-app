@@ -8,24 +8,24 @@ import {
 import { barberService } from '../shared/barberService.model';
 import { CommonService } from '../service/common-service.service';
 import moment from 'moment';
-import { LocalStorageService } from '../service/local-storage.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
   styleUrls: ['./book-appointment.component.scss'],
+  providers: [MessageService],
 })
 export class BookAppointmentComponent implements OnInit {
   constructor(
     private commonService: CommonService,
     private formBuilder: FormBuilder,
-    private localStorageService: LocalStorageService
+    private messageService: MessageService
   ) {}
 
   addNewAppointmentForm: FormGroup = new FormGroup({});
 
-
-// rirendirizon faqen per te shfaqur editimete e reja
+  // rirendirizon faqen per te shfaqur editimete e reja
   set object(item: any) {
     setTimeout(() => {
       if (item !== undefined) {
@@ -41,33 +41,21 @@ export class BookAppointmentComponent implements OnInit {
 
   initializeForm(value: any): FormGroup {
     return this.formBuilder.group({
-      firstname: new FormControl(null, Validators.required),
-      lastname: new FormControl(null, Validators.required),
-      number: new FormControl(null, Validators.required),
-      date: new FormControl(null, Validators.required),
-      hour: new FormControl(null, Validators.required),
-      servicesList: new FormControl(null, Validators.required),
+      firstname: new FormControl(value?.firstname, Validators.required),
+      lastname: new FormControl(value?.lastname, Validators.required),
+      number: new FormControl(value?.number, Validators.required),
+      date: new FormControl(value?.date, Validators.required),
+      hour: new FormControl(value?.hour, Validators.required),
+      servicesList: new FormControl(value?.servicesList, Validators.required),
     });
   }
- 
+
   @Input() services: barberService[] = [];
   @Input() firstname: string = '';
   @Input() lastname: string = '';
   @Input() number: number = 0;
   @Input() date: Date = new Date();
   @Input() hour: Date = new Date();
-
-  timeValue: string = '';
-  onSelect($event: Date) {
-    let hour = new Date($event).getHours();
-    let min = new Date($event).getMinutes();
-    if (min < 10) {
-      this.timeValue = `${hour}:0${min}`;
-    } else {
-      this.timeValue = `${hour}:${min}`;
-    }
-  }
-
 
   checkedValues: Array<Number> = [];
   checkValue(event: any, service: barberService) {
@@ -98,16 +86,24 @@ export class BookAppointmentComponent implements OnInit {
         moment(this.addNewAppointmentForm.value.hour).add(
           this.calculateTime() as moment.DurationInputArg1,
           units
-          )
-          ).format('HH:mm:ss'),
-        };
-        this.commonService.data.next(object);
-        // this.localStorageService.setItem(object.firstname,  JSON.stringify(object))
-        this.addNewAppointmentForm.reset();
-        this.showDialog(false);
+        )
+      ).format('HH:mm:ss'),
+    };
+    this.commonService.data.next(object);
+    this.addNewAppointmentForm.reset();
+    this.showDialog(false);
+    this.showSuccess();
   }
 
-  
+  showSuccess() {
+    this.messageService.add({
+      key: 'tl',
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Event added',
+    });
+  }
+
   display: boolean = false;
   showDialog(value: boolean) {
     this.display = value;
