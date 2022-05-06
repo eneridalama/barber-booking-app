@@ -26,6 +26,15 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from "@angular/common/http";
+import {ToastModule} from 'primeng/toast';
+import {SpeedDialModule} from 'primeng/speeddial';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ProgressBarModule} from 'primeng/progressbar';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { HeaderComponent } from './header/header.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -40,6 +49,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TimelineComponent,
     BarberServicesComponent,
     AddServiceComponent,
+    ProgressBarComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +70,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     InputNumberModule,
     InputMaskModule,
     InputTextModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
+    SpeedDialModule,
+    ProgressSpinnerModule,
+    ConfirmPopupModule,
+    ProgressBarModule,
+    InputSwitchModule,
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

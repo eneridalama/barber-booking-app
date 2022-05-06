@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface Event {
+export interface Event {
   id: number;
   title: string;
   start: string;

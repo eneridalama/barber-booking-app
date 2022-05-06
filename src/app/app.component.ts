@@ -19,6 +19,5 @@ export class AppComponent {
   date: Date = new Date();
   hour: Date = new Date();
   selectedService = [];
-
  
 }
