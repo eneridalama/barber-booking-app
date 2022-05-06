@@ -26,6 +26,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from "@angular/common/http";
+import { PriceChangerPipe } from './price-changer.pipe';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -40,6 +41,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TimelineComponent,
     BarberServicesComponent,
     AddServiceComponent,
+    PriceChangerPipe,
   ],
   imports: [
     BrowserModule,
