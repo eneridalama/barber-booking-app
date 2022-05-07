@@ -31,8 +31,9 @@ export class ProgressBarComponent implements OnInit {
     const eventList = this.localStorageService.getEventList();
     for (let event in eventList) {
       const today = new Date();
+      console.log('today '+today)
       if (
-        moment(this.localStorageService.getEventById(+event + 1)!.start).isSame(
+        moment(this.localStorageService.getEventById(+event + 1)!.start, 'day').isSame(
           today,
           'day'
         )
@@ -45,7 +46,7 @@ export class ProgressBarComponent implements OnInit {
         );
         let b = moment(this.localStorageService.getEventById(+event + 1)!.end);
         this.hourList.push(b.diff(a, 'hours'));
-        console.log(this.hourList);
+        console.log('hourlist ',this.hourList);
       }
     }
     return this.hourList.reduce(

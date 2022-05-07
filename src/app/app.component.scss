@@ -2,8 +2,8 @@
     margin: auto;
     .row{
         .buttons{
-            margin: 0;
-            // padding: 0 0 20px 0;
+            
+            padding: 20px 0 0 0;
             // background-color: rgb(32, 41, 95);
 
         }
@@ -14,7 +14,7 @@
 @media only screen and (min-width: 768px) {
     .container{
         // background-color: red;
-        margin-top: 20px;
+        margin-top: 10px;
     
     .row{
         .first{
