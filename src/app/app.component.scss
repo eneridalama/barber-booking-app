@@ -1,27 +1,30 @@
 .container{
+    margin: auto;
     .row{
         .buttons{
-            margin: 0;
-            padding: 0 0 20px 0;
+            
+            padding: 20px 0 0 0;
             // background-color: rgb(32, 41, 95);
 
         }
     }
 }
 
-@media only screen and (min-width: 600px) {
+
+@media only screen and (min-width: 768px) {
     .container{
         // background-color: red;
+        margin-top: 10px;
     
     .row{
         .first{
             // align-items: center;
             height: auto;
-            margin: auto;
+            // margin: auto;
             // max-height: 300px;
         }
         .col{
-            padding: 50px 0 0 0;
+            padding: 50px 50px;
             .pad-item{
                 padding: 40px 0;
             }

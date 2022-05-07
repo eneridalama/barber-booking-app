@@ -22,7 +22,7 @@ export class BarberServicesComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  constructor(private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig) {}
+  constructor(private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig, private messageService: MessageService) {}
 
   ngOnInit() {
     this.primengConfig.ripple = true;
@@ -52,17 +52,21 @@ export class BarberServicesComponent implements OnInit {
     this.services.splice(index, 1);
   }
 
+  showTopLeft(severity: string, summary: string, detail: string) {
+    this.messageService.add({key: 'tl', severity: severity, summary: summary, detail: detail});
+}
+
   confirm(listItem: barberService) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.deleteService(listItem);         
-          this.msgs = [{severity:'success',  detail:'Record deleted'}];
+        this.deleteService(listItem);
+        this.showTopLeft('success', 'Approved', 'Service deleted');          
       },
       reject: () => { 
-        this.msgs = [{severity:'error',  detail:'You have rejected'}];
+        this.showTopLeft('error', 'Recejted', 'Service did not get deleted');  
       }
   });
 }
