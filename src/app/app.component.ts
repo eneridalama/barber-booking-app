@@ -9,7 +9,6 @@ import { BARBER_SERVICES } from './shared/BARBER_SERVICES';
 })
 export class AppComponent {
 
-
   title = 'Barber Booking App';
   
   services: barberService[]  = BARBER_SERVICES; 
@@ -20,5 +19,5 @@ export class AppComponent {
   date: Date = new Date();
   hour: Date = new Date();
   selectedService = [];
-
+ 
 }
