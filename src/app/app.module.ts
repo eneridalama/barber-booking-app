@@ -50,7 +50,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     BarberServicesComponent,
     AddServiceComponent,
     ProgressBarComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

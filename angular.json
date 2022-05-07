@@ -32,7 +32,6 @@
             ],
             "styles": [
               "./node_modules/primeicons/primeicons.css",
-
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
@@ -47,7 +46,8 @@
                 "inject": false
               }
             ],
-          "scripts": []
+          "scripts": [
+          ]
         },
         "configurations": {
           "production": {
