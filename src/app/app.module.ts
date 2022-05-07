@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
@@ -26,6 +25,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from "@angular/common/http";
+import { PriceChangerPipe } from './price-changer.pipe';
 import {ToastModule} from 'primeng/toast';
 import {SpeedDialModule} from 'primeng/speeddial';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
@@ -49,8 +49,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TimelineComponent,
     BarberServicesComponent,
     AddServiceComponent,
+    PriceChangerPipe,
     ProgressBarComponent,
     HeaderComponent
+
   ],
   imports: [
     BrowserModule,
