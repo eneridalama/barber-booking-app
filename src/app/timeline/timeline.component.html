@@ -1,8 +1,23 @@
-
 <full-calendar [deepChangeDetection]="true" [options]="calendarOptions"></full-calendar>
 
-<!-- <p-toast></p-toast>
+<p-dialog [(visible)]="display" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        How do you wish to procceed with this event?
+    </ng-template>
+    <p-card header={{title}}>
+        <div>
+        Starts {{startTime}} <br>
+     
+</div>
+<div>
+        Start time: {{start}} <br>
+        End time: {{end}}
+</div>
+    </p-card>
 
-<p-confirmPopup></p-confirmPopup> -->
+    <ng-template pTemplate="footer">
+    <p-button icon="pi pi-pencil" label="Edit" styleClass="p-button-warning"></p-button>
+    <p-button icon="pi pi-trash" label="Delete" styleClass="p-button-danger"></p-button>
+    </ng-template>
 
-<!-- <button (click)="confirm($event)" pButton icon="pi pi-check" label="Confirm"></button> -->
+</p-dialog>

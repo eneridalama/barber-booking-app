@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarOptions} from '@fullcalendar/angular';
+import { CalendarOptions, EventClickArg} from '@fullcalendar/angular';
+import moment from 'moment';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { CommonService } from '../service/common-service.service';
-import { LocalStorageService } from '../service/local-storage.service';
+import { LocalStorageService } from '../service/local-storage.service'; 
 
 @Component({
   selector: 'app-timeline',
@@ -15,6 +16,14 @@ export class TimelineComponent implements OnInit {
   subscription: Subscription = new Subscription();
 
   calendarOptions: CalendarOptions = {};
+  showModal: boolean = false;
+  title = '';
+  date:string = '';
+  startTime: any;
+  endTime: any;
+  start: any;
+  end: any;
+  description: any;
 
   constructor(
     private commonService: CommonService,
@@ -48,12 +57,19 @@ export class TimelineComponent implements OnInit {
       eventStartEditable: true,
       eventResizableFromStart: true,
       eventDurationEditable: true,
-      events: localStorageService.getEventList() as any,
-    
-      eventClick: function (calEvent) {
-        console.log('calEvent ', calEvent.event.remove());       
-      },
-    };
+      events: localStorageService.getEventList() as any, 
+      eventClick: this.handleEventClick.bind(this)
+    }; 
+  }
+  
+  display: boolean = false;
+  handleEventClick(model: EventClickArg) {
+    this.title = model.event.title;
+    this.start = moment(model.event.start).format('LLLL');
+    this.end = moment(model.event.end).format('LLLL');
+    this.startTime = moment(model.event.start).fromNow();;
+    this.endTime = moment(model.event.end).fromNow();;
+    this.display = true;
   }
 
   ngOnInit(): void {
