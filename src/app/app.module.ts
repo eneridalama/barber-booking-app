@@ -25,7 +25,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from "@angular/common/http";
-import { PriceChangerPipe } from './price-changer.pipe';
+import { PriceChangerPipe } from './shared/price-changer.pipe';
 import {ToastModule} from 'primeng/toast';
 import {SpeedDialModule} from 'primeng/speeddial';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
@@ -34,6 +34,7 @@ import {ProgressBarModule} from 'primeng/progressbar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HeaderComponent } from './header/header.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import { TimeChangerPipe } from './shared/time-changer.pipe';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -51,7 +52,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AddServiceComponent,
     PriceChangerPipe,
     ProgressBarComponent,
-    HeaderComponent
+    HeaderComponent,
+    TimeChangerPipe
 
   ],
   imports: [
