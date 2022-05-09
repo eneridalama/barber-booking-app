@@ -1,15 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import {Message} from 'primeng/api';
+import {
+  ConfirmationService,
+  MessageService,
+} from 'primeng/api';
+import { Message } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
-import {SelectItem} from 'primeng/api';
 import { barberService } from '../shared/barberService.model';
 
 @Component({
   selector: 'app-barber-services',
   templateUrl: './barber-services.component.html',
   styleUrls: ['./barber-services.component.scss'],
-  providers: [ConfirmationService, MessageService]
+  providers: [ConfirmationService, MessageService],
 })
 export class BarberServicesComponent implements OnInit {
   @Input() services: barberService[] = [];
@@ -19,10 +21,13 @@ export class BarberServicesComponent implements OnInit {
   selectedService: barberService = { image: '', title: '', time: 0, price: 0 };
   image: string = '';
   openEdit: boolean = false;
-
   msgs: Message[] = [];
 
-  constructor(private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig, private messageService: MessageService) {}
+  constructor(
+    private confirmationService: ConfirmationService,
+    private primengConfig: PrimeNGConfig,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.primengConfig.ripple = true;
@@ -38,7 +43,7 @@ export class BarberServicesComponent implements OnInit {
         }
       });
       this.openEdit = false;
-      console.log('if'+this.selectedService)
+      console.log('if' + this.selectedService);
     } else {
       event['image'] = 'assets/images/new-haircut.webp';
       this.services.unshift(event);
@@ -47,14 +52,19 @@ export class BarberServicesComponent implements OnInit {
   }
 
   deleteService(listItem: barberService) {
-    console.log(listItem)
+    console.log(listItem);
     const index = this.services.indexOf(listItem);
     this.services.splice(index, 1);
   }
 
-  showTopLeft(severity: string, summary: string, detail: string) {
-    this.messageService.add({key: 'tl', severity: severity, summary: summary, detail: detail});
-}
+  showTopRight(severity: string, summary: string, detail: string) {
+    this.messageService.add({
+      key: 'tl',
+      severity: severity,
+      summary: summary,
+      detail: detail,
+    });
+  }
 
   confirm(listItem: barberService) {
     this.confirmationService.confirm({
@@ -63,13 +73,13 @@ export class BarberServicesComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteService(listItem);
-        this.showTopLeft('success', 'Approved', 'Service deleted');          
+        this.showTopRight('success', 'Approved', 'Service deleted');
       },
-      reject: () => { 
-        this.showTopLeft('error', 'Recejted', 'Service did not get deleted');  
-      }
-  });
-}
+      reject: () => {
+        this.showTopRight('error', 'Recejted', 'Service did not get deleted');
+      },
+    });
+  }
 
   editService(event: any) {
     this.selectedService = event;
@@ -83,13 +93,10 @@ export class BarberServicesComponent implements OnInit {
 
   showModal(value: boolean) {
     this.openModal = value;
-    this.selectedService = { image: '', title: '', time: 0, price: 0};
+    this.selectedService = { image: '', title: '', time: 0, price: 0 };
   }
 
   onPress() {
     this.display = !this.display;
   }
-
 }
-
-

@@ -5,7 +5,7 @@ export interface Event {
   title: string;
   start: string;
   end: string;
-  description?: string;
+  description: string;
 }
 
 @Injectable({
@@ -40,16 +40,19 @@ export class LocalStorageService {
     return events.find((event) => event.id === id);
   }
 
-  // public setItem(key: string, value: string) {
-  //   localStorage.setItem(key, value);
-  // }
+  deleteEventById(id: number) {
+    const events: Event[] = this.getEventList();
+    let event = this.getEventById(id)!;
+    const index = events.indexOf(event);
+    events.splice(index, 1);
+    localStorage.setItem('events', JSON.stringify(events));
+    console.log(events);
+  }
 
-  // public getItem(key: string) {
-  //   return localStorage.getItem(key);
+  editEventTitle(id: number, title: string) {
+    const events: Event[] = this.getEventList();
+    let event: Event = this.getEventById(id)!;
+    event.title = title;
+    return event.title;
+  }
 }
-// public removeItem(key:string) {
-//   localStorage.removeItem(key);
-// }
-// public clear(){
-//   localStorage.clear();
-// }

@@ -1,11 +1,10 @@
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-} from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-add-service',
@@ -13,20 +12,19 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./add-service.component.scss'],
 })
 export class AddServiceComponent implements OnInit {
-  serviceForm: FormGroup = new FormGroup({})
+  serviceForm: FormGroup = new FormGroup({});
   @Output() addedService = new EventEmitter<any>();
   @Output() openModal = new EventEmitter<boolean>();
   @Input()
-  set object(item: any){
+  set object(item: any) {
     setTimeout(() => {
-      if(item !== undefined){
+      if (item !== undefined) {
         this.serviceForm = this.initializeForm(item);
-      } 
-    })
+      }
+    });
   }
 
-  constructor(private formBuilder:FormBuilder) {
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.serviceForm = this.initializeForm(null);
@@ -34,11 +32,11 @@ export class AddServiceComponent implements OnInit {
 
   initializeForm(value: any): FormGroup {
     return this.formBuilder.group({
-      title: new FormControl(value?.title,Validators.required),
-      time: new FormControl(value?.time,Validators.required),
-      price: new FormControl(value?.price,Validators.required),
-      image: new  FormControl(value?.image),
-    })
+      title: new FormControl(value?.title, Validators.required),
+      time: new FormControl(value?.time, Validators.required),
+      price: new FormControl(value?.price, Validators.required),
+      image: new FormControl(value?.image),
+    });
   }
 
   addNewService() {
@@ -51,7 +49,7 @@ export class AddServiceComponent implements OnInit {
     this.openModal.emit(false);
   }
 
-  close(){
+  close() {
     this.openModal.emit(false);
   }
 }

@@ -17,15 +17,18 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class BookAppointmentComponent implements OnInit {
-  constructor(
-    private commonService: CommonService,
-    private formBuilder: FormBuilder,
-    private messageService: MessageService
-  ) {}
-
+  @Input() services: barberService[] = [];
+  @Input() firstname: string = '';
+  @Input() lastname: string = '';
+  @Input() number: number = 0;
+  @Input() date: Date = new Date();
+  @Input() hour: Date = new Date();
+  Date: Date = new Date();
+  minHour: Date = new Date();
+  maxHour: Date = new Date();
   addNewAppointmentForm: FormGroup = new FormGroup({});
-
-  // rirendirizon faqen per te shfaqur editimete e reja
+  display: boolean = false;
+  checkedValues: Array<Number> = [];
   set object(item: any) {
     setTimeout(() => {
       if (item !== undefined) {
@@ -34,9 +37,15 @@ export class BookAppointmentComponent implements OnInit {
     });
   }
 
+  constructor(
+    private commonService: CommonService,
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
+  ) {}
+
   ngOnInit(): void {
     this.addNewAppointmentForm = this.initializeForm(null);
-    // this.localStore.saveData('id', 'jk123');
+    this.timeRange();
   }
 
   initializeForm(value: any): FormGroup {
@@ -50,14 +59,12 @@ export class BookAppointmentComponent implements OnInit {
     });
   }
 
-  @Input() services: barberService[] = [];
-  @Input() firstname: string = '';
-  @Input() lastname: string = '';
-  @Input() number: number = 0;
-  @Input() date: Date = new Date();
-  @Input() hour: Date = new Date();
+  timeRange() {
+    const today = moment(this.Date).format('YYYY-MM-DD');
+    this.minHour = new Date(today + ' 09:00:00');
+    this.maxHour = new Date(today + ' 20:59:00');
+  }
 
-  checkedValues: Array<Number> = [];
   checkValue(event: any, service: barberService) {
     if (event.checked.length == 1) {
       this.checkedValues.push(service.time);
@@ -104,7 +111,6 @@ export class BookAppointmentComponent implements OnInit {
     });
   }
 
-  display: boolean = false;
   showDialog(value: boolean) {
     this.display = value;
     this.addNewAppointmentForm.reset();

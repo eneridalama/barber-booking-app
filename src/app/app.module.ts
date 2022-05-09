@@ -27,15 +27,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from "@angular/common/http";
 import { PriceChangerPipe } from './shared/price-changer.pipe';
 import {ToastModule} from 'primeng/toast';
-import {SpeedDialModule} from 'primeng/speeddial';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HeaderComponent } from './header/header.component';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { TimeChangerPipe } from './shared/time-changer.pipe';
-
+import {InplaceModule} from 'primeng/inplace';
+import {DividerModule} from 'primeng/divider';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -53,7 +52,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PriceChangerPipe,
     ProgressBarComponent,
     HeaderComponent,
-    TimeChangerPipe
+    TimeChangerPipe,
 
   ],
   imports: [
@@ -76,11 +75,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     InputTextModule,
     HttpClientModule,
     ToastModule,
-    SpeedDialModule,
-    ProgressSpinnerModule,
     ConfirmPopupModule,
     ProgressBarModule,
     InputSwitchModule,
+    InplaceModule,
+    DividerModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

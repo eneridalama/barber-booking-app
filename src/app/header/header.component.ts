@@ -22,8 +22,4 @@ export class HeaderComponent implements OnInit {
       this.themeService.switchTheme('lara-light-blue');
     }
   }
-  changeTheme(theme: string) {
-    this.themeService.switchTheme(theme);
-    console.log(theme);
-  }
 }

@@ -3,7 +3,7 @@ p-dialog {
     padding: 15px 8px;
   }
 
-  form{
+  form {
     margin-top: 5px;
   }
 
@@ -11,32 +11,28 @@ p-dialog {
     padding-left: 15px;
   }
 
-.phone-mask{
-  height: 83px;
-  p-inputmask{
-    width: 239.5px;
+  .phone-mask {
+    height: 83px;
+    p-inputmask {
+      width: 239.5px;
+    }
   }
-}
-  
-
 }
 
 @media only screen and (min-width: 768px) {
-  .grid{
+  .grid {
     display: grid;
-  grid-template-columns: auto auto auto;
-  // gap: 10px;
-  // padding: 10px;
-  .grid-3{
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-  .grid-4 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-   
-    display: grid;
-    grid-template-columns: auto auto auto; }
-  
+    grid-template-columns: auto auto auto;
+    .grid-3 {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    .grid-4 {
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
   }
 }

@@ -6,7 +6,6 @@
             <label for="inputtitle">Title</label>
         </span>
     </div>
-
     <div class="p-inputgroup">
         <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
         <span class="p-float-label">
@@ -21,13 +20,9 @@
             <label for="inputprice">Price</label>
         </span>
     </div>
-
-
     <input type="text" formControlName="image" hidden>
-
     <p-fileUpload name="myfile[]" accept="image/*" id="inputtimage">
     </p-fileUpload>
-
 </form>
 <div class="d-flex justify-content-between">
     <p-button icon="pi pi-times" label="Cancel" (onClick)="close()"></p-button>

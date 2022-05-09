@@ -1,25 +1,24 @@
 .container {
-    padding: 30px 20px 0 20px;
-    // color: rgb(227, 235, 241);
-    h1{
+  padding: 30px 20px 0 20px;
+  h1 {
     font-weight: bold;
     font-size: 1.8rem;
     margin: auto;
-    font-family: 'Montserrat Subrayada', sans-serif;  
-  } 
+    font-family: "Montserrat Subrayada", sans-serif;
+  }
 }
 
-.light-switch{
-    display: flex;
-    flex-direction: row-reverse;
-    padding-top: 20px;
+.theme-switch {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {
-    .container{
-        display: block;
-        .row{
-            display: block;
-        }
+  .container {
+    display: block;
+    .row {
+      display: block;
     }
+  }
 }
