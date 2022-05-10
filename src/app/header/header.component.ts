@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
 
   handleChange(e: any) {
     let isChecked = e.checked;
-    console.log(isChecked);
     if (isChecked) {
       this.themeService.switchTheme('lara-dark-blue');
     } else {

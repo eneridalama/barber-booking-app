@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ConfirmationService,
-  MessageService,
-} from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Message } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { barberService } from '../shared/barberService.model';
